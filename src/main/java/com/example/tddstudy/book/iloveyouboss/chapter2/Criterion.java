@@ -7,7 +7,7 @@ public class Criterion implements Scoreable {
     private Answer answer;
     private int score;
 
-    public Criterion(Weight weight, Answer answer) {
+    public Criterion( Answer answer, Weight weight) {
         this.weight = weight;
         this.answer = answer;
     }

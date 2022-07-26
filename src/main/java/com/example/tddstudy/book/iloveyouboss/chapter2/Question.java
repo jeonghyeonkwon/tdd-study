@@ -5,7 +5,7 @@ public abstract class Question {
     private String[] answerChoices;
     private int id;
 
-    public Question(String text, String[] answerChoices, int id) {
+    public Question(int id, String text, String[] answerChoices) {
         this.text = text;
         this.answerChoices = answerChoices;
         this.id = id;

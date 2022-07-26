@@ -2,6 +2,7 @@ package com.example.tddstudy.book.iloveyouboss;
 
 
 import com.example.tddstudy.book.iloveyouboss.chapter1.ScoreCollection;
+import com.example.tddstudy.book.iloveyouboss.chapter2.*;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -28,6 +29,39 @@ public class ScoreCollectionTest {
 
         //단언
         assertEquals(actualResult,6);
+    }
+
+    @Test
+    public void matches(){
+        Profile profile = new Profile("Bull Hockey, Inc");
+        Question question = new BooleanQuestion(1,"Got milk?");
+
+        // must-match 항목이 맞지 않으면 false
+        profile.add(new Answer(question, Bool.FALSE));
+        Criteria criteria = new Criteria();
+        criteria.add(
+                new Criterion(
+                        new Answer(question, Bool.TRUE),
+                        Weight.MustMatch
+                )
+        );
+
+        assertFalse(profile.matches(criteria));
+
+        // don't care 항목에 대해서는 true
+        profile.add(new Answer( question,Bool.FALSE));
+        criteria = new Criteria();
+        criteria.add(
+                new Criterion(
+                        new Answer(question, Bool.TRUE),
+                        Weight.DontCare
+                )
+        );
+        assertThat(profile.matches(criteria));
+
+        /*
+        * 첫 번째 테스트가 실패 하면 두번째 테스트는 실행 되지 않는다 그러므로 분리해서 나누어야 된다.
+        * */
     }
 
 

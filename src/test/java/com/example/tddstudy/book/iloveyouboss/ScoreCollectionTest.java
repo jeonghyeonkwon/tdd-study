@@ -1,11 +1,12 @@
 package com.example.tddstudy.book.iloveyouboss;
 
 
-import com.example.tddstudy.book.iloveyouboss.chapter1.ScoreCollection;
+import com.example.tddstudy.book.iloveyouboss.chapter6.ScoreCollection;
 import com.example.tddstudy.book.iloveyouboss.chapter2.*;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.InstanceOfAssertFactories.collection;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -64,5 +65,21 @@ public class ScoreCollectionTest {
         * */
     }
 
+    @Test
+    public void throwsExceptionWhenAddingNull(){
+        ScoreCollection collection = new ScoreCollection();
 
+        assertThrows(IllegalStateException.class,()->{
+                collection.add(null);
+        });
+    }
+
+    @Test
+    public void dealsWithIntegerOverflow(){
+        ScoreCollection collection = new ScoreCollection();
+        collection.add(()->Integer.MAX_VALUE);
+        collection.add(()->1);
+        System.out.println(collection.arithmeticMean());
+        assertTrue(collection.arithmeticMean() < 0);
+    }
 }

@@ -15,7 +15,7 @@ public class TransmissionTest {
     @BeforeEach
     public void create(){
         car = new Car();
-        transmission = new Transmission();
+        transmission = new Transmission(car);
     }
 
     @Test

@@ -25,8 +25,17 @@ public class Answer {
     public boolean match(int expected){
         return question.match(expected, i);
     }
-    public boolean match(Answer otherAnswer){
-        return question.match(i, otherAnswer.i);
+
+    public boolean match(Answer otherAnswer) {
+        return match(otherAnswer);
+    }
+
+    private boolean match(Criterion criterion, Answer otherAnswer) {
+        return match(otherAnswer);
+    }
+
+    public boolean match(Criterion criterion, Answer answer){
+        return question.match(i, answer.i);
     }
 
     public Question getCharacteristic(){

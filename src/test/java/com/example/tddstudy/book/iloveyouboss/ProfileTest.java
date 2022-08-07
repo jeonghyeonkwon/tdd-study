@@ -32,6 +32,7 @@ public class ProfileTest {
         criteria.add(criterion);
     }
 
+
     @Test
     public void matchAnswersFalseWhenMustMatchCriteriaNotMet(){
 //        Profile profile = new Profile("Bull Hockey, Inc.");
@@ -93,4 +94,5 @@ public class ProfileTest {
         boolean matches = profile.matches(criteria);
         assertTrue(matches);
     }
+
 }

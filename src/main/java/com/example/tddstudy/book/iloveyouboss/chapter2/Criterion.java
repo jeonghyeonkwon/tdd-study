@@ -28,4 +28,11 @@ public class Criterion implements Scoreable {
     public int getScore() {
         return score;
     }
+
+
+
+    public boolean matches( Answer answer) {
+//        return criterion.getWeight() == Weight.DontCare || answer.match(criterion.getAnswer());
+        return getWeight()==Weight.DontCare || answer.match(getAnswer());
+    }
 }
